@@ -43,7 +43,8 @@
   "scripts": {
     "postinstall": "node_modules/.bin/bower install",
     "server": "node server.js",
-    "start": "gulp serve"
+    "start": "gulp serve",
+    "build": "gulp build --production"
   },
   "author": "Brandon Pereira",
   "license": "ISC"
