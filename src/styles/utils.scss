@@ -1,0 +1,33 @@
+@mixin utils() {
+	.hide {
+	  display: none !important;
+	}
+	.no-margin {
+	  margin: 0 !important;
+	}
+	.text-right {
+	  text-align: right;
+	}
+	.overflow-hidden {
+		overflow: hidden !important;
+	}
+	.text-center {
+		text-align: center;
+	}
+	.ellipsis {
+	  text-overflow: ellipsis;
+	  white-space: nowrap;
+	  overflow: hidden;
+	  display: block;
+	}
+	.fullSize {
+	  position:absolute;
+	  top:0;
+	  right:0;
+	  left:0;
+	  bottom:0;
+	}
+	.disabled {
+	  pointer-events: none;
+	}
+}

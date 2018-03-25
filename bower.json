@@ -1,0 +1,24 @@
+{
+  "name": "flash",
+  "version": "0.0.0",
+  "authors": [
+    "Branclon <brandonpereiras@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "./src/libs/",
+    "./dist",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.3.1",
+    "angular": "^1.5.8",
+    "lodash": "^4.14.1",
+    "ngPlacesAutocomplete": "ng-places-autocomplete#^1.2.4"
+  },
+  "devDependencies": {
+  }
+}

@@ -1,0 +1,20 @@
+{
+	"name": "Wings.cheap",
+	"short_name": "Wings.cheap",
+	"start_url": ".",
+	"description": "For finding you cheap wing deals.",
+	"icons": [
+		{
+			"src": "\/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image\/png"
+		},
+		{
+			"src": "\/android-chrome-384x384.png",
+			"sizes": "384x384",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#0085ff",
+	"display": "standalone"
+}

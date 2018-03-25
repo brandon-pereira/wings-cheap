@@ -1,0 +1,16 @@
+<header class="app-nav">
+	
+	<span class="back-button" ui-sref="Home" ui-sref-active="hide">
+		<svg class="icon">
+			<use xlink:href="icons.svg#back-arrow"></use>
+		</svg>     
+	</span>
+	
+	<div class="page-title">
+		<h1>{{pageTitle}}</h1>
+		<sup ng-show="pageTitle === 'Wings.cheap'">beta</sup>		
+	</div>
+	
+	<button ui-sref="AddDeal" ui-sref-active="hide" ripple-effect>Add Deal</button>
+</header>
+<header class="app-nav-placeholder"></header>

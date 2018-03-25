@@ -1,0 +1,51 @@
+@mixin filters { 
+	filters-screen {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		z-index: 3;
+		pointer-events: none;
+		transition: background .2s;
+		.content {
+			background: #f2f2f2;
+			position: absolute; 
+			bottom: 0;
+			right: 0;
+			left: 0;
+			box-shadow: 0 -2px 3px -1px rgba(0,0,0,.5);
+			transform: translate(0, 2rem);
+			opacity: 0;
+	    z-index: 1;
+		}
+		.close {
+	    position: absolute;
+	    top: 0;
+	    bottom: 0;
+	    width: 100%;
+	    z-index: 0;
+	  }
+		&.visible {
+			background: rgba(0,0,0,.3);
+			pointer-events: all;
+			.content {
+				transition: all 300ms 100ms;
+				opacity: 1;
+				transform: none;
+			}
+		}
+	  sup {
+	    font-size: 10px;
+	    vertical-align: middle;
+	    background: map-get($config, accent1);
+	    color: #eee;
+	    padding: 5px;
+	    border-radius: 3px;
+	  }
+	  .filter-disabled {
+	    opacity: 0.5;
+	    pointer-events: none;
+	  }
+	}
+}

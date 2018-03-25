@@ -1,0 +1,22 @@
+@mixin grid() {
+	.row {
+	  display: flex;
+		&.horizontal {
+			flex-direction: column;
+		}
+		&.uncollapse .column {
+			padding: 0;
+		}
+		+ .row {
+			margin-top: 20px;
+		}
+	}
+	.column {
+		min-width: 0;
+	  flex: 1;
+	  padding: 0 10px;
+	}
+	.column-2 {
+		flex: 2;
+	}
+}

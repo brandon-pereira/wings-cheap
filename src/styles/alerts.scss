@@ -1,0 +1,38 @@
+@mixin alerts() {
+	.alert {
+		padding: 10px;
+		background: map-get($config, accent1);
+		color: #fff;
+		border-radius: 3px;
+		
+		ul {
+			margin: 10px 0 0 20px;
+			list-style: disc;
+			li {
+				padding: 0 0 5px 0;
+			}
+		}
+		
+		a {
+			color: #fff;
+			text-decoration: underline;
+		}
+		
+		.align-center {
+			align-self: center;
+		}
+		.margin-left {
+			margin-left: 1rem;
+		}
+		
+		&.error {
+			background: #AF2828;
+		}
+		&.expanded {
+			margin: 10px 0 5px 0;
+		}
+		&.margin {
+			margin: 5px;
+		}
+	}
+}

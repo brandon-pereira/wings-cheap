@@ -1,0 +1,49 @@
+<div class="close" ng-click="visible=false"></div>
+<div class="content row horizontal">
+	<form ng-submit="onSubmit({sortBy: sortBy, filters: {dow: dow, city: city.id}})">
+		<div class="row column">
+			<h2 class="heading-first">Filters</h2>
+		</div>
+		<div class="row">
+			<div class="column">
+				<label>Sort By:</label>
+				<div class="select-style">
+					<select ng-model="sortBy">
+						<option value="best">Best</option>
+						<option value="price">Price</option>
+						<option value="distance">Distance</option>
+						<option value="successRate">Rating</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<label>City: <sup>Beta</sup></label>
+				<div class="select-style">
+					<select ng-model="city" ng-options="city_option as city_option.name for city_option in cities track by city_option.id"></select>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="column">
+				<label>Day of week:</label>
+				<div class="select-style">
+					<select ng-model="dow">
+						<option value="">Any</option>
+						<option value="sun">Sunday</option>
+						<option value="mon">Monday</option>
+						<option value="tue">Tuesday</option>
+						<option value="wed">Wednesday</option>
+						<option value="thu">Thursday</option>
+						<option value="fri">Friday</option>
+						<option value="sat">Saturday</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row column">
+			<button type="submit">Filter</button>
+		</div>
+	</form>
+</div>

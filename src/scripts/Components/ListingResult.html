@@ -1,0 +1,68 @@
+<div class="listing result" ng-class="[classes, {loading: !loaded}]">
+	<div class="row result-row-1">
+		<div class="column column-2">
+			<div class="information">
+				<strong class="name ellipsis">
+					{{listing.name}}
+				</strong>
+				<div class="address" ng-bind-html="listing.adr_address_safe"></div>
+				<div class="website" ng-show="listing.website">
+					<a class="svg-icon ellipsis" ng-href="{{listing.website}}" target="_blank">		
+						<svg>
+							<use xlink:href="icons.svg#website"></use>
+						</svg>
+						{{listing.website}}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="column row horizontal uncollapse">
+			<div class="buttons row column">
+				<a class="link phone column" ripple-effect ng-href="tel:{{ listing.formatted_phone_number }}">
+					<svg>
+						<use xlink:href="icons.svg#phone"></use>
+					</svg>
+					<span>Phone</span>
+				</a>
+				<a class="link directions column" ripple-effect target="_" ng-click="$event.stopPropagation()" ng-href="https://maps.google.com?q={{listing.vicinity}}">
+					<svg>
+						<use xlink:href="icons.svg#directions"></use>
+					</svg>
+					<span>Directions</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="row result-row-2 no-margin uncollapse" ng-hide="!deal">
+			<div class="pricing row horizontal column column-2">
+				<div>
+					<span class="price">${{deal.price}}</span>
+					<span class="per">
+						{{ deal.unit === 'PER' ? 'per wing' : 'per lb' }}
+					</span>
+				</div>
+				<div>
+					<span class="dow">{{ deal.dow_friendly }}</span>					
+				</div>
+			</div>
+			<div class="rating">
+				<div class="successRate">{{deal.successRate}}%</div>	
+				<div class="successRate-caption">FOUND<BR>USEFUL</div>
+							
+			</div>
+			<div class="column row horizontal" ng-class="{disabled: deal.isLiked}">
+				<div class="row feedback column uncollapse">
+					<a class="column dislike feedback-button" ripple-effect ng-class="{selected: deal.isLiked && !deal.isLiked.selected}" ui-sref="Feedback({ type: '0', gPlace: deal.place_id, name: listing.name})">
+						<svg>
+							<use xlink:href="icons.svg#thumbs-down"></use>
+						</svg>
+					</a>
+					<a class="column like feedback-button" ripple-effect ng-class="{selected: deal.isLiked.selected}" ui-sref="Feedback({ type: '1', gPlace: deal.place_id, name: listing.name })" >
+						<svg>
+							<use xlink:href="icons.svg#thumbs-up"></use>
+						</svg>
+					</a> 
+				</div>
+			</div>	
+	</div>
+</div>

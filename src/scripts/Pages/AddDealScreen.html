@@ -1,0 +1,87 @@
+<form name="addDealForm" ng-submit="submitForm(addDealForm.$valid)" novalidate>
+	<div class="row" ng-show="hasErrors">
+		<div class="column">
+			<div class="alert error">
+				Oops. Looks like there are some issues with your submission.
+				<ul>
+					<li ng-show="errors.restraunt">Invalid restaurant</li>
+					<li ng-show="errors.dow">Atleast one day of the week must be selected.</li>
+					<li ng-show="errors.price">Price is required and must be a valid number (ex 30 cents is 0.30)</li>
+					<li ng-show="errors.unit">Unit must be specified.</li>
+					<li ng-show="!errors.restraunt && errors.city">The restraunt submitted can't be added. It doesn't contain the required information. Check back later. Sorry!</li>
+					<li ng-show="!errors.restraunt && errors.unsupported">We currently don't support this town/city. We are rolling out slowly, check back later. Sorry!</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<label>Restaurant Name: </label>
+			<input type="text" ng-places-autocomplete  ng-model="restaurantName" ng-focus="restaurantName = ''" pa-on-place-ready="autoCompleteCb" pa-options="autoCompleteSettings"/>
+		</div>
+	</div>	
+	<div class="row" ng-show="result">
+		<div class="column">
+			<listing-result listing="result" classes="'no-margin'"></listing-list>
+			<input type="hidden" ng-model="result" required ng-required="true">
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<label>Day(s) of week:</label>
+			<div class="dow-container">
+				<div class="dow">
+					<input type="checkbox" id="dow-sun" ng-model="dow.sun" name="dow.sun">
+					<label for="dow-sun" ripple-effect>Sun</label>
+				</div>
+				<div class="dow">
+					<input type="checkbox" id="dow-mon" ng-model="dow.mon">
+					<label for="dow-mon" ripple-effect>Mon</label>
+				</div>
+				<div class="dow">
+					<input type="checkbox" id="dow-tue" ng-model="dow.tue">
+					<label for="dow-tue" ripple-effect>Tue</label>
+				</div>
+				<div class="dow">
+					<input type="checkbox" id="dow-wed" checked ng-model="dow.wed">
+					<label for="dow-wed" ripple-effect>Wed</label>
+				</div>
+				<div class="dow">
+					<input type="checkbox" id="dow-thu" ng-model="dow.thu">
+					<label for="dow-thu" ripple-effect>Thu</label>
+				</div>
+				<div class="dow">
+					<input type="checkbox" id="dow-fri" ng-model="dow.fri">
+					<label for="dow-fri" ripple-effect>Fri</label>
+				</div>
+				<div class="dow">
+					<input type="checkbox" id="dow-sat" ng-model="dow.sat">
+					<label for="dow-sat" ripple-effect>Sat</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="column">
+			<label>Price: </label>
+			<div class="input-icon">
+				<i>&dollar;</i>
+				<input type="number" placeholder="0.35" min="0.05" max="20.00" ng-model="price" />
+			</div>
+		</div>
+		<div class="column">
+			<label>&nbsp; </label>
+			<div class="select-style">
+				<select ng-init="unit = 'PER'" ng-model="unit">
+					<option value="PER" ng-selected="true">per wing</option>
+					<option value="LBS">per pound</option>
+				</select>
+			</div>
+		</div>
+	</div>	
+	<div class="row">
+		<div class="column">
+			<button class="button" type="submit" ng-disabled="userForm.$invalid" ripple-effect>Add Listing</button>
+		</div>
+	</div>
+</form>

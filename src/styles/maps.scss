@@ -1,0 +1,42 @@
+@mixin maps() {
+	#map {
+	  background: #fff, url('images/map-placeholder.png') center;
+	  display: flex;
+		flex: 1;
+	  height: 100%;
+	  &.loaded {
+	    background: #fff;
+	  }
+	  &.hidden {
+	    display: none;
+	  }
+	}
+
+	section {
+	  display: flex;
+	  flex-direction: column;
+	  height: calc(100% - #{map-deep-get($config, navigation, height)});
+	  @include medium() {
+	    flex-direction: row;
+	    
+	    div[ui-view] {
+				overflow: hidden;
+	      flex: 1;
+				display: flex;
+	    }
+	  }
+	  map {
+	    flex: 1;
+			flex-direction: column;
+	    overflow:hidden;
+	    min-height: 50%;
+	    border-right: 1px solid #D0D0D0;
+			display: flex;
+	    &.hidden {
+	      flex: 0;
+	      min-height: 0;
+	    }
+	  }
+	  
+	}
+}

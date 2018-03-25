@@ -1,0 +1,146 @@
+@mixin forms() {
+	$darkGrey: darken(map-deep-get($config, body, background), 10%);
+
+	form {
+		margin: 1rem auto;
+		width: 100%;
+		max-width: map-get($config, medium);
+	}
+	label {
+		display: inline-block;
+		color: darken($darkGrey, 30%);
+		margin: 0 0 0.3rem 0;
+	}
+	input[type=text], input[type=number] {
+		box-sizing: border-box;
+		appearance: none;
+		border: none;
+		width: 100%;
+		outline: none;
+		font: 14px 'Helvetica Neue', sans-serif;
+		padding: 8px;
+		box-shadow: inset 0 0 0 1px $darkGrey, 0 1px 2px lighten($darkGrey, 5%);
+		border-radius: 3px;
+		&:focus {
+			box-shadow: inset 0 0 0 2px map-get($config, accent3), 0 1px 2px lighten($darkGrey, 5%);
+		}
+	}
+	.button {
+		box-shadow: inset 0 0 0 1px rgba(0,0,0,.1);
+	}
+	
+	.dow-container {
+		display: flex;
+		.dow {
+			flex: 1;
+			user-select: none;
+			input[type=checkbox] {
+				// Hide Input (we rely on label)
+				position: absolute;
+				top: -1000px;
+				visibility: hidden;
+				pointer-events: none;
+				~ label {
+					height: 40px;
+					width: 100%;
+					color: #000;
+					background: linear-gradient(#fff, #eee);
+					box-shadow: inset 0 -1px #fff;
+					text-align: center;
+					line-height: 40px;
+					border: 1px solid #D0D0D0;
+					border-bottom-width: 2px;
+					border-right-width: 0;
+					box-sizing: border-box;
+				}
+				&:checked {
+					~ label {
+						// color: #fff;
+						border-color: darken(map-get($config, accent2), 20%);
+						text-shadow: 1px 1px darken(map-get($config, accent2), 10%);
+						background: map-get($config, accent2);
+						box-shadow: inset 0 0 15px 5px darken(map-get($config, accent2), 10%), inset 0 -1px darken(map-get($config, accent2), 20%);
+					}
+				}
+			}
+			&:last-of-type input[type=checkbox] ~ label{
+				border-right-width: 1px;
+				border-radius: 0 5px 5px 0;
+			}
+			&:first-of-type input[type=checkbox] ~ label{
+				border-radius: 5px 0 0 5px;
+			}
+		}
+	}
+	
+	.select-style {
+		box-shadow: inset 0 0 0 1px $darkGrey, 0 1px 2px lighten($darkGrey, 5%);
+		border-radius: 3px;
+		width: 100%;
+		overflow: hidden;
+		background: #fff;
+		position: relative;
+		
+		select {
+			font: 14px 'Helvetica Neue', sans-serif;
+			padding: 8px;
+	    width: 130%;
+	    border: none;
+	    box-shadow: none;
+	    background: transparent;
+			appearance: none;
+			&:focus {
+				outline: none;
+			}
+		}
+		&:after {
+			content:'';
+			position:absolute;
+			background: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20660%20360%27%3E%3Cpath%20fill%3D%27" + map-get($config, accent2) +"%27%20d%3D%27M330%20360c-7.7%200-15.4-2.9-21.2-8.8l-300-300C-2.9%2039.5-2.9%2020.5%208.8%208.8s30.7-11.7%2042.4%200L330%20287.6%20608.8%208.8c11.7-11.7%2030.7-11.7%2042.4%200s11.7%2030.7%200%2042.4l-300%20300c-5.8%205.9-13.5%208.8-21.2%208.8z%27%2F%3E%3C%2Fsvg%3E");
+			background-repeat: no-repeat;
+			background-size: 20px;
+			background-position: center;
+			box-shadow:inset 0 0 0 1px rgba(0,0,0,.2);
+			top:0;
+			right :0;
+			bottom: 0;
+			width:40px;
+			pointer-events: none;
+		}
+		&:before {
+			content:'';
+			position:absolute;
+			background: linear-gradient(map-get($config, accent1), darken(map-get($config, accent1), 8%));
+			box-shadow:inset 0 0 0 1px rgba(0,0,0,.2);
+			top:0;
+			right :0;
+			bottom: 0;
+			width:40px;
+			pointer-events: none;
+		}
+	}
+	
+	.input-icon {
+		position: relative;
+		
+		> i {
+			position: absolute;
+			border-radius: 0 5px 5px 0;
+			// transform: translate(0, -50%);
+			line-height: 32px;
+			top: 0%;
+			bottom: 0;
+			right: 0;
+			width: 40px;
+			text-align: center;
+			font-style: normal;
+			background: #DED1D1;
+			opacity:0.5;
+			pointer-events: none;
+		}
+		
+		> input {
+			padding-right: 50px;
+		}
+	}
+}

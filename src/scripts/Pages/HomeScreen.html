@@ -1,0 +1,37 @@
+<home-screen>
+	<div class="listings-container" ng-class="{'loading': !loaded}">
+		<div class="alert error margin" ng-show="serverUnavailable">
+			Oops. Looks like Wings.cheap servers are acting up. Please try refreshing or try again later.
+		</div>
+		<div class="alert error margin" ng-show="!serverUnavailable && locatonError">
+			Unable to determine your current location. For more information on possible fixes, see here <a href="https://buddypunch.freshdesk.com/support/solutions/articles/4000063036" target="_">How do I enable Location Services on my mobile device or browser?</a>
+		</div>
+		<div class="alert margin row uncollapse" ng-show="!serverUnavailable && differentCity" ng-click="switchToCity(differentCity.id)">
+			<span class="column align-center">Looks like you're located in {{differentCity.name}}. Would you like to switch to this city?</span>
+			<button class="margin-left">YES</button>
+		</div>
+		<div class="alert error margin" ng-show="!serverUnavailable && !currentCity">
+			Oops. Looks like you're not in a supported city. You can still find wing deals, but first you'll need to pick a city. <a href="#" ng-click="filtersVisible = true">Open Filters</a>.
+		</div>
+		<div class="no-results" ng-show="!serverUnavailable && listings && !listings.length && loaded">
+			No results found.<br>Try broadening your filters. 
+		</div>
+	  <listing-list ng-repeat="l in listings" listing="l" index="$index" ui-sref="Result({id: l.place_id, name: l.name})"></listing-list>
+		<div class="results-loader loader" ng-if="!loaded">
+		  <div class="spinner"></div>
+		  Loading Results
+		</div>
+	</div>
+	<div class="results-bar row">
+		<div class="count column">{{listings.length}} results found.</div>
+		<div class="filters column text-right">
+			<button ng-click="filtersVisible = !filtersVisible">
+				<svg>
+					<use xlink:href="icons.svg#filter"></use>
+				</svg>
+				Filter
+			</button>
+		</div>
+	</div>
+	<filters-screen on-submit="applyFilters({sortBy: sortBy, filters: filters})" visible="filtersVisible" city="filters.city" sort-by="filters.sortBy" dow="filters.dow" cities="cities"></filters-screen>
+</home-screen>

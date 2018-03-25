@@ -1,0 +1,7 @@
+# Ignore Generated Files
+node_modules/
+bower_components/
+dist/
+.idea/
+.env
+.DS_Store

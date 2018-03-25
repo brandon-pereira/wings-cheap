@@ -1,0 +1,33 @@
+@mixin typography() {
+	
+	.heading-first, .heading-second, .heading-third, .heading-sub, .heading-section {
+		font-family: 'Roboto', sans-serif;
+	}
+
+	.heading-first {
+		font-size:20px;
+		font-weight: 800;
+	}
+	strong {
+	  font-weight: bold;
+	}
+	
+	a {
+		color: #00a3ff;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+		&.svg-icon svg {
+			display: inline-block;
+			vertical-align: middle;
+			height: 10px;
+			width: 10px;
+		}
+	}
+	
+	svg {
+		fill: currentColor;
+	}
+	
+}

@@ -1,0 +1,9 @@
+<div class="row" ng-show="error">
+	<div class="column">
+		<div class="alert error expanded">
+			{{error}} - Oops. Looks like there are some issues with your submission.
+		</div>
+	</div>
+</div>
+
+<listing-result ng-show="!error" listing="result" loaded="loaded" deal="deal"></listing-result>
