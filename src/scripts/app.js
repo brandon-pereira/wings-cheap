@@ -8,7 +8,7 @@ var app = angular.module("app", [
 
 app.constant("_", window._);
 app.constant("config", {
-  serverLocation: "api"
+  serverLocation: "/wings-cheap/api"
 });
 
 app.factory("google", function($window) {
